@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>PayPal - Log in</title></head>
+<body>
+  <h1>Loading…</h1>
+  <div id="app"></div>
+  <script>
+    // Simulates a JS-rendered phishing kit: no password field exists at
+    // document_end, the form is injected shortly afterwards.
+    setTimeout(function () {
+      document.getElementById("app").innerHTML =
+        '<form action="/collect" method="post"><input name="u"><input type="password" name="p"></form>';
+    }, 1500);
+  </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aegis Settings</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="page__header">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="page__mark">
+        <path d="M12 2 L21 6 V12 C21 17 17.5 20.7 12 22 C6.5 20.7 3 17 3 12 V6 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <circle cx="12" cy="11" r="3" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M12 8 V4.6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <h1>Aegis Settings</h1>
+        <p class="page__subtitle">Tune detection sensitivity and manage sites you trust.</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2 class="card__title">Appearance</h2>
+      <p class="card__hint">Match your system, or pin Aegis to one theme.</p>
+      <div class="segmented" id="themeSegmented" role="radiogroup" aria-label="Theme">
+        <button type="button" class="segmented__opt" data-value="system" role="radio">System</button>
+        <button type="button" class="segmented__opt" data-value="light" role="radio">Light</button>
+        <button type="button" class="segmented__opt" data-value="dark" role="radio">Dark</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="card__title">Detection sensitivity</h2>
+      <p class="card__hint">Higher sensitivity scores more aggressively — you'll see more medium/high flags, including some false positives. Lower sensitivity favors fewer interruptions.</p>
+      <div class="segmented" id="sensitivitySegmented" role="radiogroup" aria-label="Detection sensitivity">
+        <button type="button" class="segmented__opt" data-value="low" role="radio">Low</button>
+        <button type="button" class="segmented__opt" data-value="medium" role="radio">Medium</button>
+        <button type="button" class="segmented__opt" data-value="high" role="radio">High</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 class="card__title">Warnings</h2>
+      <label class="toggle-row">
+        <span>
+          <span class="toggle-row__label">Show banner on medium-risk pages</span>
+          <span class="toggle-row__hint">By default the on-page banner only appears for high-risk pages; the toolbar badge always shows the score.</span>
+        </span>
+        <input type="checkbox" id="showBannerOnMedium" class="switch" />
+      </label>
+      <label class="toggle-row">
+        <span>
+          <span class="toggle-row__label">System notification for high-risk pages</span>
+          <span class="toggle-row__hint">Pops a desktop notification in addition to the badge and banner.</span>
+        </span>
+        <input type="checkbox" id="notifications" class="switch" />
+      </label>
+    </section>
+
+    <section class="card">
+      <h2 class="card__title">Trusted sites (allowlist)</h2>
+      <p class="card__hint">Trusted sites are scored 0 and never show a warning banner. Add a domain or click "Trust this site" from the popup on any page.</p>
+      <form id="allowlistForm" class="allowlist-form">
+        <input type="text" id="allowlistInput" placeholder="example.com" autocomplete="off" spellcheck="false" />
+        <button type="submit" class="btn btn--primary">Add</button>
+      </form>
+      <ul id="allowlistList" class="allowlist-list"></ul>
+      <p id="allowlistEmpty" class="card__hint" hidden>No trusted sites yet.</p>
+    </section>
+
+    <p id="savedNote" class="saved-note" hidden>Settings saved</p>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PayPal - Log in to your account</title>
+</head>
+<body>
+  <h1>PayPal-style test page</h1>
+  <p>
+    The page title names "PayPal" and the page has a password field, but it is
+    served from localhost, not paypal.com. Aegis should add the
+    <code>brand_title_mismatch</code> reason (the brand-in-title signal only
+    counts on pages that also ask for a password). Because this server is plain
+    HTTP you will also see the <code>password_http</code> reason, for a medium
+    score.
+  </p>
+  <form onsubmit="return false;">
+    <label>Email <input type="text" name="email" /></label><br /><br />
+    <label>Password <input type="password" name="password" /></label><br /><br />
+    <button type="submit">Log in</button>
+  </form>
+  <p><a href="/">Back to index</a></p>
+</body>
+</html>

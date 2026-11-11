@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aegis Test Server</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 48px auto; padding: 0 16px; color: #1a1a1a; }
+    h1 { font-size: 20px; }
+    li { margin-bottom: 10px; line-height: 1.5; }
+    code { background: #f0f0f0; padding: 1px 5px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Aegis local test pages</h1>
+  <p>Load the unpacked extension, open the service worker console (<code>chrome://extensions</code> → Inspect views), then click through these:</p>
+  <ul>
+    <li><a href="/clean.html">/clean.html</a> — plain page, should score 0, no banner.</li>
+    <li><a href="/password-http.html">/password-http.html</a> — a password field on plain HTTP. Should trigger the <code>password_http</code> reason.</li>
+    <li><a href="/brand-mismatch.html">/brand-mismatch.html</a> — a "PayPal" login page on a non-PayPal domain. Should trigger <code>brand_title_mismatch</code> (plus <code>password_http</code>).</li>
+    <li><a href="/redirect/start">/redirect/start</a> — a 4-hop server-side (302) redirect chain landing on <code>/redirect/final.html</code>. Should trigger <code>chain_length</code>.</li>
+  </ul>
+  <p><b>Not testable on localhost:</b> lookalike-domain, punycode, and combosquat checks need a real registrable domain (e.g. <code>paypa1.com</code>) to compare against the brand list — they won't fire against <code>localhost</code>. To exercise those paths, run the unit tests instead: <code>npm test</code>.</p>
+</body>
+</html>
