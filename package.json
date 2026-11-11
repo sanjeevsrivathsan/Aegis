@@ -1,0 +1,11 @@
+{
+  "name": "phishguard",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Real-time phishing and lookalike domain detector (Chrome extension)",
+  "scripts": {
+    "test": "node test/domainAnalysis.test.js && node test/background.test.js",
+    "test:server": "node test-server/server.js",
+    "test:e2e": "node test/e2e.test.js"
+  }
+}
